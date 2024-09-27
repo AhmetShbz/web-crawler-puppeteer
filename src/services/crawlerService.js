@@ -157,22 +157,17 @@ async function extractAndSaveInteractiveElements(page, url) {
 async function simulateAndSaveJsonResponses(page, url) {
     const jsonResponses = await page.evaluate(() => {
         const responses = [];
-        // Simulate API calls
-        const apiEndpoints = [
-            '/api/users',
-            '/api/products',
-            '/api/orders'
-        ];
+        // Simulate API calls dynamically by intercepting
+        const apiEndpoints = Array.from(new Set(window.performance.getEntriesByType("resource").filter(entry => entry.initiatorType === 'xmlhttprequest').map(entry => entry.name)));
         apiEndpoints.forEach(endpoint => {
             responses.push({
-                url: new URL(endpoint, window.location.origin).href,
+                url: endpoint,
                 data: {
-                    // Simulated data
                     success: true,
                     data: [
-                        { id: 1, name: 'Item 1' },
-                        { id: 2, name: 'Item 2' },
-                        { id: 3, name: 'Item 3' }
+                        { id: 1, name: 'Sample Item 1' },
+                        { id: 2, name: 'Sample Item 2' },
+                        { id: 3, name: 'Sample Item 3' }
                     ]
                 }
             });

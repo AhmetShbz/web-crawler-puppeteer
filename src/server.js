@@ -84,13 +84,21 @@ app.post('/crawl', upload.single('browserProfile'), async (req, res) => {
     options.login = { username, password, loginUrl };
   }
 
+  // Proxy bilgileri doğru geliyor mu kontrol et ve logla
   if (useProxy === 'true') {
-    options.proxy = {
-      host: proxyHost || config.proxy.host,
-      port: proxyPort || config.proxy.port,
-      username: proxyUsername || config.proxy.username,
-      password: proxyPassword || config.proxy.password
-    };
+    if (proxyHost && proxyPort) {
+      options.proxy = {
+        host: proxyHost || config.proxy.host,
+        port: proxyPort || config.proxy.port,
+        username: proxyUsername || config.proxy.username,
+        password: proxyPassword || config.proxy.password
+      };
+      logger.info(`Proxy bilgileri kullanılıyor: ${JSON.stringify(options.proxy)}`);
+    } else {
+      logger.warn('Proxy bilgileri eksik veya kullanılmıyor.');
+    }
+  } else {
+    logger.warn('Proxy bilgileri kullanılmıyor.');
   }
 
   try {

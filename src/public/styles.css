@@ -31,10 +31,11 @@ body {
     transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-/* Analiz sayfasındaki kutuların kare ve küçük olmasını sağlayan özel stil */
 .analyze-page .paper {
-    width: 200px; /* Küçük kare kutu boyutu */
-    height: 200px; /* Kare olması için aynı yükseklik */
+    width: 100%; /* Kutuların genişliğini tam yapıyoruz */
+    max-height: 200px; /* Her kutunun maksimum yüksekliği */
+    overflow-y: auto; /* İçerik taşarsa kaydırma çubuğunu aktif ediyoruz */
+    padding: 15px; /* İsteğe bağlı: içeriklerden biraz boşluk bırakıyoruz */
     border-radius: 15px; /* Analiz sayfasında da border radius 15px */
 }
 
@@ -58,7 +59,7 @@ body {
 }
 
 .logs-container {
-    max-height: 400px;
+    max-height: 200px; /* Logs container için maksimum yükseklik */
     overflow-y: auto;
     transition: max-height 0.3s ease;
 }

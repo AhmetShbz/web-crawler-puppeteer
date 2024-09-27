@@ -1,10 +1,10 @@
 const { connect } = require("puppeteer-real-browser");
 const config = require('../config/default');
 const logger = require('../utils/logger');
-const fs = require('fs').promises; // Added
-const path = require('path'); // Added
+const fs = require('fs').promises;
+const path = require('path');
 
-// Add this helper function at the top of the file
+// Delay function to wait for a certain time
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 exports.launchBrowser = async (browserProfilePath, proxy, twoCaptchaKey) => {
@@ -26,13 +26,17 @@ exports.launchBrowser = async (browserProfilePath, proxy, twoCaptchaKey) => {
         ignoreAllFlags: false
     };
 
-    if (proxy) {
-        browserOptions.proxy = {
-            host: proxy.host,
-            port: proxy.port,
-            username: proxy.username,
-            password: proxy.password
-        };
+    if (proxy && proxy.host && proxy.port) {
+        logger.info(`Tarayıcı proxy ile başlatılıyor: ${JSON.stringify(proxy)}`);
+        browserOptions.args.push(`--proxy-server=${proxy.host}:${proxy.port}`);
+
+        if (proxy.username && proxy.password) {
+            browserOptions.connectOption.username = proxy.username;
+            browserOptions.connectOption.password = proxy.password;
+            logger.info(`Proxy kimlik bilgileri kullanılıyor.`);
+        }
+    } else {
+        logger.warn('Proxy bilgileri eksik veya kullanılmıyor.');
     }
 
     if (browserProfilePath) {
@@ -149,18 +153,5 @@ exports.validateBrowserProfile = async (profilePath) => {
     } catch (error) {
         logger.error(`Invalid browser profile: ${error.message}`);
         return false;
-    }
-};
-
-exports.injectJQueryIfNeeded = async (page) => {
-    const jQueryExists = await page.evaluate(() => typeof jQuery !== 'undefined');
-    if (!jQueryExists) {
-        await page.evaluate(() => {
-            const script = document.createElement('script');
-            script.src = 'https://code.jquery.com/jquery-3.6.0.min.js';
-            document.head.appendChild(script);
-            return new Promise((resolve) => script.onload = resolve);
-        });
-        await page.waitForFunction(() => typeof jQuery !== 'undefined');
     }
 };
