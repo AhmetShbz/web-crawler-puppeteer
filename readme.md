@@ -1,22 +1,5 @@
 # Gelişmiş Web Sitesi Tarayıcısı
 
-## İçindekiler
-
-1. [Giriş](#giriş)
-2. [Özellikler](#özellikler)
-3. [Proje Yapısı](#proje-yapısı)
-4. [Kurulum](#kurulum)
-5. [Kullanım](#kullanım)
-6. [Yapılandırma](#yapılandırma)
-7. [Detaylı Özellikler ve Kod Örnekleri](#detaylı-özellikler-ve-kod-örnekleri)
-8. [Dosya Açıklamaları](#dosya-açıklamaları)
-9. [Gelişmiş Özellikler](#gelişmiş-özellikler)
-10. [Sorun Giderme](#sorun-giderme)
-11. [Katkıda Bulunma](#katkıda-bulunma)
-12. [Lisans](#lisans)
-
-## Giriş
-
 Gelişmiş Web Sitesi Tarayıcısı, karmaşık web sitelerinde gezinmek, dinamik içeriklerle başa çıkmak ve yaygın bot önleme yöntemlerini aşmak için tasarlanmış güçlü ve özelliklerle dolu bir web tarama çözümüdür. Kullanıcı dostu arayüzü ve sağlam altyapısıyla, hem yeni başlayanlar hem de ileri düzey kullanıcılar için uygundur.
 
 ## Özellikler
