@@ -45,14 +45,14 @@ Gelişmiş Web Sitesi Tarayıcısı, karmaşık web sitelerinde gezinmek, dinami
 
 ```mermaid
 graph TD
-    A[advanced-website-crawler] --> B[src]
+    A[web-crawler-puppeteer] --> B[src]
     A --> C[Dockerfile]
     A --> D[package.json]
     B --> E[config]
     B --> F[controllers]
     B --> G[services]
     B --> H[utils]
-    B --> I[middleware]
+    B --> I[routes]
     B --> J[public]
     B --> K[server.js]
     E --> E1[default.js]
@@ -60,17 +60,14 @@ graph TD
     G --> G1[crawlerService.js]
     G --> G2[browserService.js]
     G --> G3[storageService.js]
-    G --> G4[interactionService.js]
-    G --> G5[apiCaptureService.js]
-    G --> G6[offlineService.js]
     H --> H1[fileUtils.js]
     H --> H2[logger.js]
-    H --> H3[waitForEvent.js]
-    I --> I1[errorHandler.js]
-    I --> I2[rateLimiter.js]
+    H --> H3[server.js]
+    I --> I1[crawlRoutes.js]
     J --> J1[index.html]
     J --> J2[script.js]
     J --> J3[styles.css]
+
 ```
 
 ## Kurulum
