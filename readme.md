@@ -1,7 +1,5 @@
 # Gelişmiş Web Sitesi Tarayıcısı
 
-![Proje Logosu](https://via.placeholder.com/150?text=Advanced+Crawler)
-
 ## İçindekiler
 
 1. [Giriş](#giriş)
@@ -34,7 +32,6 @@ Gelişmiş Web Sitesi Tarayıcısı, karmaşık web sitelerinde gezinmek, dinami
 - 📊 Grafiklerle görsel tarama ilerlemesi
 - 🖼️ Sayfa önizleme işlevi
 - ⚙️ Esnek yapılandırma seçenekleri
-- 🌐 Cloudflare bypass özelliği
 - 🔄 Dinamik içerik yakalama
 - 🤖 CAPTCHA çözümü (2captcha entegrasyonu)
 - 📊 Gerçek zamanlı crawling istatistikleri
@@ -74,12 +71,12 @@ graph TD
 
 1. Depoyu klonlayın:
    ```
-   git clone https://github.com/kullanıcıadınız/advanced-website-crawler.git
+   [git clone https://github.com/kullanıcıadınız/advanced-website-crawler.git](https://github.com/AhmetShbz/web-crawler-puppeteer.git)
    ```
 
 2. Proje dizinine gidin:
    ```
-   cd advanced-website-crawler
+   cd web-crawler-puppeteer-main
    ```
 
 3. Bağımlılıkları yükleyin:
@@ -97,8 +94,6 @@ graph TD
 6. Tarayıcınızı açın ve tarayıcı arayüzüne erişmek için `http://localhost:3000` adresine gidin.
 
 ## Kullanım
-
-![Kullanım GIF](https://via.placeholder.com/600x400?text=Kullanım+GIF)
 
 1. "Website URL" alanına hedef URL'yi girin.
 2. "Max Depth" ve "Max Pages" ayarlarını ihtiyacınıza göre ayarlayın.
@@ -125,10 +120,10 @@ module.exports = {
     userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" // Varsayılan user agent stringi
   },
   proxy: {
-    host: '94.74.159.134', // Varsayılan proxy hostu
-    port: '49155', // Varsayılan proxy portu
-    username: 'sanalbaba0', // Varsayılan proxy kullanıcı adı
-    password: 'R88nDa9sFb' // Varsayılan proxy şifresi
+    host: '**********', // Varsayılan proxy hostu
+    port: '**********', // Varsayılan proxy portu
+    username: '**********', // Varsayılan proxy kullanıcı adı
+    password: '**********' // Varsayılan proxy şifresi
   },
   recaptcha: {
     provider: '2captcha',
@@ -136,92 +131,6 @@ module.exports = {
   }
 };
 ```
-
-## Detaylı Özellikler ve Kod Örnekleri
-
-1. **Gelişmiş Web Sitesi Tarama**
-   ```javascript
-   // crawlerService.js
-   exports.crawlWebsite = async (startUrl, options) => {
-     const { maxDepth, maxPages } = options;
-     // ... tarama mantığı
-   };
-   ```
-
-2. **Cloudflare Bypass**
-   ```javascript
-   // browserService.js
-   exports.handleCloudflare = async (page, url) => {
-     // ... Cloudflare bypass mantığı
-   };
-   ```
-
-3. **Kullanıcı Etkileşimi Simülasyonu**
-   ```javascript
-   // interactionService.js
-   exports.handlePageInteractions = async (page) => {
-     await this.clickButtons(page);
-     await this.fillForms(page);
-     // ... diğer etkileşimler
-   };
-   ```
-
-4. **Login Desteği**
-   ```javascript
-   // browserService.js
-   exports.performLogin = async (page, login) => {
-     const { username, password, loginUrl } = login;
-     // ... login mantığı
-   };
-   ```
-
-5. **Proxy Desteği**
-   ```javascript
-   // browserService.js
-   if (proxy) {
-     browserOptions.proxy = {
-       host: proxy.host,
-       port: proxy.port,
-       username: proxy.username,
-       password: proxy.password
-     };
-   }
-   ```
-
-6. **CAPTCHA Çözümü**
-   ```javascript
-   // browserService.js
-   if (twoCaptchaKey) {
-     puppeteer.use(
-       RecaptchaPlugin({
-         provider: {
-           id: '2captcha',
-           token: twoCaptchaKey
-         }
-       })
-     );
-   }
-   ```
-
-7. **Dinamik İçerik ve API Yakalama**
-   ```javascript
-   // apiCaptureService.js
-   exports.captureApiCalls = async (page) => {
-     return await page.evaluate(async () => {
-       const apiCalls = [];
-       // ... API çağrılarını yakalama mantığı
-       return apiCalls;
-     });
-   };
-   ```
-
-8. **Offline Kullanım Hazırlığı**
-   ```javascript
-   // offlineService.js
-   exports.prepareForOfflineUse = async (url, baseUrl, savedPath) => {
-     // ... offline kullanım için hazırlık
-   };
-   ```
 
 ## Dosya Açıklamaları
 
@@ -263,25 +172,7 @@ Tarayıcı, otomatik olarak düğmeler ve açılır pencereler gibi etkileşimli
 
 2captcha desteği ile entegre olarak, tarayıcı tarama işlemi sırasında karşılaşılan CAPTCHA'ları otomatik olarak çözebilir.
 
-## Sorun Giderme
-
-- **Sorun**: Tarayıcı Cloudflare korumasını aşamıyor
-  **Çözüm**: Yeni bir tarayıcı profili kullandığınızdan emin olun ve farklı bir coğrafi konumdan bir proxy kullanmayı deneyin.
-
-- **Sorun**: Belirli web sitelerinde giriş başarısız oluyor
-  **Çözüm**: Web sitesinin standart olmayan bir giriş formu kullanıp kullanmadığını kontrol edin. `browserService.js` dosyasındaki `performLogin` fonksiyonunu özelleştirmeniz gerekebilir.
-
-- **Sorun**: Tarama yapılan sayfalar eksik veya dinamik içerik yüklenmemiş
-  **Çözüm**: İçeriğin yüklenmesi için daha fazla zaman tanımak amacıyla yapılandırmadaki `waitTime` değerini artırın.
-
-## Katkıda Bulunma
-
-Katkılarınızı bekliyoruz! Lütfen bir çekme isteği göndermeden önce değişikliklerinizi tartışmak için bir konu açın.
-
-## Lisans
 
 Bu proje MIT Lisansı altında lisanslanmıştır - detaylar için [LİSANS](LICENSE) dosyasına bakabilirsiniz.
 
 ---
-
-Daha fazla bilgi için bize support@advancedwebcrawler.com adresinden ulaşabilir veya [resmi web sitemizi](https://www.advancedwebcrawler.com) ziyaret edebilirsiniz.
