@@ -113,29 +113,7 @@ module.exports = {
     apiKey: 'YOUR_2CAPTCHA_API_KEY' // CAPTCHA'ları çözmek için 2captcha API anahtarınız
   }
 };
-```
-
-## Dosya Açıklamaları
-
-1. **src/server.js**: Express sunucusunu başlatır ve yapılandırır.
-2. **src/controllers/crawlController.js**: HTTP isteklerini işler ve crawling işlemlerini yönetir.
-3. **src/services/crawlerService.js**: Ana crawling mantığını içerir.
-4. **src/services/browserService.js**: Tarayıcı işlemlerini yönetir.
-5. **src/services/storageService.js**: Veri depolama işlemlerini yönetir.
-6. **src/services/interactionService.js**: Sayfa etkileşimlerini simüle eder.
-7. **src/services/apiCaptureService.js**: API çağrılarını yakalar ve simüle eder.
-8. **src/services/offlineService.js**: Offline kullanım için siteyi hazırlar.
-9. **src/utils/fileUtils.js**: Dosya işlemleri için yardımcı fonksiyonlar sağlar.
-10. **src/utils/logger.js**: Loglama işlemlerini yönetir.
-11. **src/utils/waitForEvent.js**: Asenkron işlemler için güvenli bekleme mekanizması sağlar.
-12. **src/middleware/errorHandler.js**: Hata yönetimi middleware'i.
-13. **src/middleware/rateLimiter.js**: Rate limiting uygular.
-14. **src/public/index.html**: Ana web arayüzü sayfası.
-15. **src/public/script.js**: Kullanıcı arayüzü mantığını içerir.
-16. **src/public/styles.css**: Kullanıcı arayüzü stillerini tanımlar.
-17. **src/config/default.js**: Uygulama genelinde kullanılan yapılandırma ayarlarını içerir.
-18. **Dockerfile**: Docker konteyner yapılandırmasını tanımlar.
-19. **package.json**: Proje meta verilerini ve bağımlılıklarını tanımlar.
+``
 
 ## Gelişmiş Özellikler
 
